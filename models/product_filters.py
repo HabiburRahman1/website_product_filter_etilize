@@ -8,13 +8,13 @@ class ProductFilters(models.Model):
     _table = 'product_filter_etilize_view'
     _auto = False
 
-    name = fields.Char(readonly=True)
-    group_id = fields.Many2one(readonly=True)
-    value_ids = fields.One2many(readonly=True)
-    sequence = fields.Integer(readonly=True)
-    filter_line_ids = fields.One2many(readonly=True)
-    create_variant = fields.Boolean(readonly=True)
-    type = fields.Selection(readonly=True)
+    name = fields.Char()
+    group_id = fields.Many2one()
+    value_ids = fields.One2many()
+    sequence = fields.Integer()
+    filter_line_ids = fields.One2many()
+    create_variant = fields.Boolean()
+    type = fields.Selection()
 
     _sql_constraints = []
 
@@ -48,10 +48,10 @@ class ProductFiltervalue(models.Model):
     _table = 'product_filter_value_etilize_view'
     _auto = False
 
-    name = fields.Char(readonly=True)
-    sequence = fields.Integer(readonly=True)
-    filter_id = fields.Many2one(readonly=True)
-    html_color = fields.Char(readonly=True)
+    name = fields.Char()
+    sequence = fields.Integer()
+    filter_id = fields.Many2one()
+    html_color = fields.Char()
 
     _sql_constraints = []
 
@@ -85,15 +85,14 @@ class ProductfilterLine(models.Model):
     _table = 'product_filter_line_etilize_view'
     _auto = False
 
-    product_tmpl_id = fields.Many2one(readonly=True)
-    filter_id = fields.Many2one(readonly=True)
+    product_tmpl_id = fields.Many2one()
+    filter_id = fields.Many2one()
 
     # use the same table as etilize 'etilize_attribute_value_product_rel', 'attribute_val_id', 'product_id'
     value_ids = fields.Many2many(
         relation='etilize_attribute_value_product_rel',
         column1='attribute_val_id',
         column2='product_id',
-        readonly=True,
     )
 
 
@@ -121,4 +120,4 @@ class ProductfilterLine(models.Model):
 class ProductTemplate(models.Model):
     _inherit = "product.template"
 
-    filter_line_ids = fields.One2many(readonly=True)
+    filter_line_ids = fields.One2many()

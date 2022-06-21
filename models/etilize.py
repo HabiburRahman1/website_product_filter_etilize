@@ -5,22 +5,14 @@ from odoo.exceptions import ValidationError
 
 class EtilizeAttributeMaster(models.Model):
     _inherit = 'etilize.attribute.master'
-
-    # Add indexes
-
-    # Add fields
     sequence = fields.Integer(default=10)
 
     filter_ok = fields.Boolean(
-        'Filter',
-        index=True,
-        help="If true, a website filter will be shown.",
-    )
+        string='Filter', help="If true, a website filter will be shown.")
 
     filter_group_id = fields.Many2one(
         'product.filter.group',
-        index=True,
-        string="Filter Group",
+        string="Filter Group"
     )
 
     filter_type = fields.Selection([
@@ -28,12 +20,14 @@ class EtilizeAttributeMaster(models.Model):
         ('select', 'Select'),
         ('color', 'Color'),
         ('hidden', 'Hidden'),
-        ],
+    ],
         default='radio',
     )
 
-    type_variant = fields.Selection([('radio', 'Radio'),('select', 'Select'),('color', 'Color'),('hidden', 'Hiden')], 'Typer Variant')
+    type_variant = fields.Selection([('radio', 'Radio'), ('select', 'Select'), (
+        'color', 'Color'), ('hidden', 'Hiden')], 'Typer Variant')
     is_variant = fields.Boolean('Is variant')
+
 
 class EtilizeAttributeValueMaster(models.Model):
     _inherit = "etilize.attribute.value.master"
@@ -49,6 +43,7 @@ class EtilizeAttributeValueMaster(models.Model):
              "to display the color on the website if the attibute type is "
              "'Color'."
     )
+
 
 class EtilizeAttributeMatching(models.Model):
     _inherit = "etilize.attribute.matching"
