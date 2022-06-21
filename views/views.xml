@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_etilize_atrribute_master_tree" model="ir.ui.view">
+        <field name="inherit_id" ref="etilize_integration.view_etilize_atrribute_master_tree" />
+        <field name="model">etilize.attribute.master</field>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="sequence" widget="handle"/>
+            </field>
+            <field name="etilize_attribute_id" position="before">
+                <field name="filter_ok" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_etilize_atrribute_master_form" model="ir.ui.view">
+        <field name="inherit_id" ref="etilize_integration.view_etilize_atrribute_master_form" />
+        <field name="model">etilize.attribute.master</field>
+        <field name="arch" type="xml">
+            <field name="etilize_attribute_id" position="before">
+                <field name="filter_ok" />
+                <field name="filter_group_id" attrs="{'invisible': [('filter_ok', '=', False)]}"/>
+                <field name="filter_type" attrs="{'invisible': [('filter_ok', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="view_etilize_atrribute_value_master_tree" model="ir.ui.view">
+        <field name="inherit_id" ref="etilize_integration.view_etilize_atrribute_value_master_tree" />
+        <field name="model">etilize.attribute.value.master</field>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="sequence" widget="handle"/>
+            </field>
+            <field name="etilize_attribute_id" position="after">
+                <field name="filter_html_color" widget="color"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_etilize_atrribute_value_master_form" model="ir.ui.view">
+        <field name="inherit_id" ref="etilize_integration.view_etilize_atrribute_value_master_form" />
+        <field name="model">etilize.attribute.value.master</field>
+        <field name="arch" type="xml">
+            <field name="etilize_attribute_id" position="after">
+                <field name="filter_html_color" widget="color"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_etilize_atrribute_matching_form" model="ir.ui.view">
+        <field name="inherit_id" ref="etilize_integration.view_etilize_atrribute_matching_form" />
+        <field name="model">etilize.attribute.matching</field>
+        <field name="arch" type="xml">
+            <field name="etilize_attribute_values" position="after">
+                <field name="filter_ok" />
+            </field>
+        </field>
+    </record>
+
+    <record id="product_template_only_form_view_etilize" model="ir.ui.view">
+        <field name="inherit_id" ref="etilize_integration.product_template_only_form_view_etilize" />
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <field name="etilize_attribute_id" position="after">
+                <field name="filter_ok" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
